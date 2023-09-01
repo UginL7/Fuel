@@ -12,11 +12,17 @@
 	<artifactId>fuel_history</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>fuel_history</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Web application to save fuel catch story </description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -36,7 +42,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
