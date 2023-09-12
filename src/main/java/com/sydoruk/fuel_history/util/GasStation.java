@@ -2,16 +2,16 @@ package com.sydoruk.fuel_history.util;
 
 import java.util.Random;
 
-public enum gasStation {
+public enum GasStation {
     OKKO("Окко"), WOG("WOG"), 
     AVIAS("АВІАС"), UkrNafta("УкрНафта"), 
     ZNP("Запоріжнафтопродукт");
 
     private String nameStation;
 
-    public static gasStation getRandomStation(){
+    public static GasStation getRandomStation(){
         Random random = new Random();
-        gasStation stations[] = gasStation.values();
+        GasStation stations[] = GasStation.values();
         int rnd = random.nextInt(0, stations.length);
         return stations[rnd];
     }
@@ -20,7 +20,7 @@ public enum gasStation {
         return nameStation;
     }
 
-    private gasStation(String nameStation){
+    private GasStation(String nameStation){
         this.nameStation = nameStation;
     }   
 }

@@ -3,8 +3,13 @@ package com.sydoruk.fuel_history.model;
 import java.sql.Timestamp;
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-public class paymentReceipt{
+@Entity
+public class PaymentReceipt{
+    
+    @Id
     private String id;
     private String timeStamp;
     private String gasStation;
@@ -12,18 +17,9 @@ public class paymentReceipt{
     private Float pricePerLiter;
     private Float liters;
     
-    /*private paymentReceipt(final String id, final String timeStamp, 
-                            final String gasStation, final String fuelType,
-                            final Float pricePerLiter, final Float liters){
-        this.id = id;
-        this.timeStamp = timeStamp;
-        this.gasStation = gasStation;
-        this.fuelType = fuelType;
-        this.pricePerLiter = pricePerLiter;
-        this.liters = liters;
-    }*/
+    public PaymentReceipt(){}
 
-    public paymentReceipt(final String id, final String gasStation, final String fuelType, final Float pricePerLiter, final Float liters){      
+    public PaymentReceipt(final String id, final String gasStation, final String fuelType, final Float pricePerLiter, final Float liters){      
         if(id == null || id.isEmpty()){
                this.id = UUID.randomUUID().toString();
         }else{
@@ -35,6 +31,10 @@ public class paymentReceipt{
         this.fuelType = fuelType;
         this.pricePerLiter = pricePerLiter;
         this.liters = liters;
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
 
     public String getId(){
