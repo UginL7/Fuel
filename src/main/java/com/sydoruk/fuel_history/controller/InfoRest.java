@@ -36,21 +36,20 @@ public class InfoRest {
         return paymentRepo.findById(id);
     }
 
-    @PostMapping("add")
+    @PostMapping("{id}")
     public PaymentReceipt addOne (@RequestBody PaymentReceipt newReceipt){
         return paymentRepo.save(newReceipt);
     }
 
-    @PutMapping("{id}")
-    ResponseEntity<PaymentReceipt> updPaymentReceipt(@PathVariable String id, @RequestBody PaymentReceipt updReceipt){
-        return (paymentRepo.existsById(id)) ?             
-            new ResponseEntity<>(paymentRepo.save(updReceipt), HttpStatus.OK):
-            new ResponseEntity<>(paymentRepo.save(updReceipt), HttpStatus.CREATED);
-    }
-
-    @DeleteMapping("del/{id}")
+    @DeleteMapping("{id}")
     void deleteReceipt(@PathVariable String id){
         paymentRepo.deleteById(id);
     }
 
+    @PutMapping("{id}")
+    ResponseEntity<PaymentReceipt> updPaymentReceipt(@PathVariable String id, @RequestBody PaymentReceipt updReceipt){
+        return (paymentRepo.existsById(id)) ?
+            new ResponseEntity<>(paymentRepo.save(updReceipt), HttpStatus.OK):
+            new ResponseEntity<>(paymentRepo.save(updReceipt), HttpStatus.CREATED);
+    }
 }
