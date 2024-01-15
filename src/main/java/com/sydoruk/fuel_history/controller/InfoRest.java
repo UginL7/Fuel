@@ -32,7 +32,7 @@ public class InfoRest {
     }
 
     @GetMapping("{id}")
-    public Optional<PaymentReceipt> getPaymentReceiptById(@PathVariable String id){
+    public Optional<PaymentReceipt> getPaymentReceiptById(@PathVariable Long id){
         return paymentRepo.findById(id);
     }
 
@@ -42,12 +42,12 @@ public class InfoRest {
     }
 
     @DeleteMapping("{id}")
-    void deleteReceipt(@PathVariable String id){
+    void deleteReceipt(@PathVariable Long id){
         paymentRepo.deleteById(id);
     }
 
     @PutMapping("{id}")
-    ResponseEntity<PaymentReceipt> updPaymentReceipt(@PathVariable String id, @RequestBody PaymentReceipt updReceipt){
+    ResponseEntity<PaymentReceipt> updPaymentReceipt(@PathVariable Long id, @RequestBody PaymentReceipt updReceipt){
         return (paymentRepo.existsById(id)) ?
             new ResponseEntity<>(paymentRepo.save(updReceipt), HttpStatus.OK):
             new ResponseEntity<>(paymentRepo.save(updReceipt), HttpStatus.CREATED);
