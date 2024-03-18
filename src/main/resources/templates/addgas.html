@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <title>Заправка</title>
+        <style>
+            table, th, td {
+              border: 1px solid rgb(132, 0, 255);
+              text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!--form action="#" method="post" th:action="${/addgas}" th:object="${newReceipt}"-->
+        <form action="#" method="post" th:object="${newReceipt}">        
+            <fieldset>
+                <input type="submit" id="submitButton" th:value="Save">
+                <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+                <table style="width:100%">
+                    <thead>
+                        <tr>
+                            <!--th>Дата</th-->
+                            <th>АЗС</th>
+                            <th>Пальне</th>
+                            <th>Вартість (грн/л)</th>
+                            <th>Обʼєм (літрів)</th>
+                            <!--th>До сплати</th-->
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <td><input th:field="*{gasStation}" /></td>
+                        <td><input th:field="*{fuelType}" /></td>
+                        <td><input th:field="*{pricePerLiter}" /></td>
+                        <td><input th:field="*{liters}" /></td>
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+    </body>
+</html>

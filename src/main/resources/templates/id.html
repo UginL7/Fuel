@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org"
+<head>
+    <title>History by ID</title>
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Дата</th>
+                <th>АЗС</th>
+                <th>Пальне</th>
+                <th>Вартість (грн/л)</th>
+                <th>Обʼєм (літрів)</th>
+                <th>До сплати</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${pr!='NotExist'}">
+                <td th:text="${pr.id}"></td>
+                <td th:text="${pr.timeStamp}"></td>
+                <td th:text="${pr.gasStation}"></td>
+                <td th:text="${pr.fuelType}"></td>
+                <td th:text="${pr.pricePerLiter}"></td>
+                <td th:text="${pr.liters}"></td>
+                <td th:text="${#numbers.formatDecimal(pr.pricePerLiter * pr.liters, 0, 2, 'COMMA')}"></td>
+            </tr>
+            <tr th:if="${pr=='NotExist'}">
+                <td>Дані відсутні</td>
+                <td>Дані відсутні</td>
+                <td>Дані відсутні</td>
+                <td>Дані відсутні</td>
+                <td>Дані відсутні</td>
+                <td>Дані відсутні</td>
+                <td>Дані відсутні</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/">На головну</a>
+</body>
